@@ -1,13 +1,9 @@
-// ==========================
-// STEP 4: DATA
-// ==========================
+
 let tasks = [];
 let statusFilter = "all";
 let tagFilter = "all";
 
-// ==========================
-// DOM ELEMENTS
-// ==========================
+
 const form = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
 const tagInput = document.getElementById("tag-input");
@@ -16,9 +12,7 @@ const taskList = document.getElementById("task-list");
 const counter = document.getElementById("task-counter");
 const tagFilterSelect = document.getElementById("tag-filter");
 
-// ==========================
-// LOCAL STORAGE
-// ==========================
+
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
@@ -30,9 +24,7 @@ function loadTasks() {
   }
 }
 
-// ==========================
-// ADD TASK (STEP 5 & 6)
-// ==========================
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -62,9 +54,7 @@ form.addEventListener("submit", function (e) {
   form.reset();
 });
 
-// ==========================
-// RENDER TASKS (STEP 7 & 8)
-// ==========================
+
 function renderTasks() {
   taskList.innerHTML = "";
 
@@ -106,9 +96,6 @@ function renderTasks() {
   updateTagFilterOptions();
 }
 
-// ==========================
-// TOGGLE TASK (STEP 9)
-// ==========================
 function toggleTask(id) {
   tasks = tasks.map((task) =>
     task.id === id ? { ...task, done: !task.done } : task
@@ -118,9 +105,7 @@ function toggleTask(id) {
   renderTasks();
 }
 
-// ==========================
-// DELETE TASK (STEP 10)
-// ==========================
+
 function deleteTask(id) {
   tasks = tasks.filter((task) => task.id !== id);
 
@@ -128,17 +113,13 @@ function deleteTask(id) {
   renderTasks();
 }
 
-// ==========================
-// COUNTER (STEP 11)
-// ==========================
+
 function updateCounter() {
   const active = tasks.filter((t) => !t.done).length;
   counter.textContent = `${active} active task${active !== 1 ? "s" : ""}`;
 }
 
-// ==========================
-// TAG FILTER (STEP 12)
-// ==========================
+
 function updateTagFilterOptions() {
   const tags = [
     ...new Set(tasks.map((t) => t.tag).filter((t) => t !== "")),
@@ -155,9 +136,7 @@ function updateTagFilterOptions() {
   });
 }
 
-// ==========================
-// FILTER EVENTS
-// ==========================
+
 document
   .querySelectorAll("#status-filters button")
   .forEach((btn) => {
@@ -172,8 +151,6 @@ tagFilterSelect.addEventListener("change", (e) => {
   renderTasks();
 });
 
-// ==========================
-// INIT APP (STEP 14)
-// ==========================
+
 loadTasks();
 renderTasks();
