@@ -1,0 +1,30 @@
+body {
+  font-family: Arial;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+input, button, select {
+  margin: 5px;
+  padding: 8px;
+}
+
+button {
+  cursor: pointer;
+}
+
+#error-message {
+  color: red;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
